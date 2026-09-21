@@ -5,7 +5,7 @@ from calculator import total, subtraction, multiplication, div
 # --- Release banner --------------------------------------------------------
 # The line below mirrors the single meaningful line of release_banner.txt.
 # It is the deliberate merge-conflict target for Task 2.
-RELEASE_BANNER = "Calculator Suite v1.0 - release banner pending final wording"
+RELEASE_BANNER = "Calculator Suite v1.0 - Green Edition: reliable, fully tested arithmetic you can trust"
 
 print("*************** DASHBOARD ***************")
 print(RELEASE_BANNER)
