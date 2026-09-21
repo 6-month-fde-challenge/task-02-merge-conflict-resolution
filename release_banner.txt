@@ -5,4 +5,4 @@
 # two branches edit it differently so Git must raise a real merge conflict.
 # The same string is mirrored in dashboard.py as RELEASE_BANNER.
 #
-Calculator Suite v1.0 - release banner pending final wording
+Calculator Suite v1.0 - Blue Edition: fast, focused arithmetic for everyday use
