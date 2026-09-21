@@ -1,0 +1,8 @@
+# Release banner for the calculator project.
+#
+# This file deliberately holds exactly ONE meaningful line: the banner text on
+# the last line below. That single line is the conflict target for Task 2 -
+# two branches edit it differently so Git must raise a real merge conflict.
+# The same string is mirrored in dashboard.py as RELEASE_BANNER.
+#
+Calculator Suite v1.0 - release banner pending final wording
