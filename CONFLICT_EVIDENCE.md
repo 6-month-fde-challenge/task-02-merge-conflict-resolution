@@ -293,14 +293,15 @@ Two merge commits: the clean one and the conflicted one.
 
 ```text
 $ git log --graph --oneline --all --decorate
-*   e64f511 (HEAD -> main) Resolve merge conflict in release_banner.txt by combining both branch wordings
+* 6d49063 (HEAD -> main, origin/main) Document the merge conflict with captured evidence and submission links
+*   e64f511 Resolve merge conflict in release_banner.txt by combining both branch wordings
 |\
-| * 404a7c8 (feature-banner-green) Reword release banner for the Green Edition
+| * 404a7c8 (origin/feature-banner-green, feature-banner-green) Reword release banner for the Green Edition
 * |   accd3ab Merge feature-banner-blue into main
 |\ \
 | |/
 |/|
-| * f0ff2f9 (feature-banner-blue) Reword release banner for the Blue Edition
+| * f0ff2f9 (origin/feature-banner-blue, feature-banner-blue) Reword release banner for the Blue Edition
 |/
 * 00d26c8 Add release_banner.txt as the shared release banner text
 * 5dc7ae6 Add calculator entry point and dashboard presentation layer
@@ -311,3 +312,18 @@ $ git log --graph --oneline --all --decorate
 
 Both branch tips are kept alive and pushed, so this exact graph reproduces on a
 fresh clone with `git log --graph --oneline --all --decorate`.
+
+> **Note on this capture.** It was taken one commit before the final
+> "Refresh captured git history evidence" commit that published it, so `main`
+> shows `6d49063` at the tip rather than that refresh commit. The base commit,
+> both branch tips, both merge commits and the resolution commit are all exactly
+> as shown; only one extra commit sits on top of `main` in the live repository.
+
+```text
+$ git ls-remote --heads origin
+f0ff2f9eb67459e82cb656c8caf38ba230716710	refs/heads/feature-banner-blue
+404a7c819a1fc320bb7f458a977657a222cee94c	refs/heads/feature-banner-green
+6d49063a7f4674d91d3a290c386cfafe75497dea	refs/heads/main
+```
+
+All three branches are present on the remote: `main` plus both feature branches.

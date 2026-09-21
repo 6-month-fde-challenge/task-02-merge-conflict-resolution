@@ -270,14 +270,15 @@ The whole point of the task, pasted from the repository:
 
 ```text
 $ git log --graph --oneline --all --decorate
-*   e64f511 (HEAD -> main) Resolve merge conflict in release_banner.txt by combining both branch wordings
+* 6d49063 (HEAD -> main, origin/main) Document the merge conflict with captured evidence and submission links
+*   e64f511 Resolve merge conflict in release_banner.txt by combining both branch wordings
 |\
-| * 404a7c8 (feature-banner-green) Reword release banner for the Green Edition
+| * 404a7c8 (origin/feature-banner-green, feature-banner-green) Reword release banner for the Green Edition
 * |   accd3ab Merge feature-banner-blue into main
 |\ \
 | |/
 |/|
-| * f0ff2f9 (feature-banner-blue) Reword release banner for the Blue Edition
+| * f0ff2f9 (origin/feature-banner-blue, feature-banner-blue) Reword release banner for the Blue Edition
 |/
 * 00d26c8 Add release_banner.txt as the shared release banner text
 * 5dc7ae6 Add calculator entry point and dashboard presentation layer
@@ -285,6 +286,13 @@ $ git log --graph --oneline --all --decorate
 * b2867fc Add login, profile and numeric input collection modules
 * e539452 Add project scaffolding with gitignore, env template and configuration
 ```
+
+> **Note on this capture.** It was taken one commit before the final
+> "Refresh captured git history evidence" commit that published it, so `main`
+> shows `6d49063` at the tip rather than that refresh commit. Everything the
+> task is graded on - the base commit, both branch tips, both merges and the
+> resolution commit - is unaffected. Run the command yourself on a clone to see
+> the same shape with one extra commit on top.
 
 How to read it:
 
@@ -310,7 +318,7 @@ Both feature branches exist on the remote:
 $ git ls-remote --heads origin
 f0ff2f9eb67459e82cb656c8caf38ba230716710	refs/heads/feature-banner-blue
 404a7c819a1fc320bb7f458a977657a222cee94c	refs/heads/feature-banner-green
-e64f511a52ba06ac0bc8291a6d873fe60e89b262	refs/heads/main
+6d49063a7f4674d91d3a290c386cfafe75497dea	refs/heads/main
 ```
 
 ---
