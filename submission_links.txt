@@ -1,0 +1,45 @@
+Task 2 - Create and Resolve a Real Merge Conflict
+Submitted by: veerandra7 (veerandra.data@gmail.com)
+
+REPOSITORY
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution
+
+DEFAULT BRANCH (main)
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/main
+
+FEATURE BRANCHES (both kept alive and pushed)
+feature-banner-blue
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/feature-banner-blue
+feature-banner-green
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/feature-banner-green
+
+COMMON BASE COMMIT (both branches were created from this commit)
+00d26c81d23ce4a4279ec6d2d1065127e037b411
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/00d26c81d23ce4a4279ec6d2d1065127e037b411
+
+BRANCH TIP COMMITS (the same line changed differently)
+feature-banner-blue  f0ff2f9eb67459e82cb656c8caf38ba230716710
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/f0ff2f9eb67459e82cb656c8caf38ba230716710
+feature-banner-green 404a7c819a1fc320bb7f458a977657a222cee94c
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/404a7c819a1fc320bb7f458a977657a222cee94c
+
+MERGE 1 - CLEAN MERGE OF feature-banner-blue (--no-ff)
+accd3ab6df8fece3be40381341086d198dfd4716
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/accd3ab6df8fece3be40381341086d198dfd4716
+
+MERGE 2 - CONFLICT RESOLUTION COMMIT (the deliverable)
+e64f511a52ba06ac0bc8291a6d873fe60e89b262
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/e64f511a52ba06ac0bc8291a6d873fe60e89b262
+
+CONFLICT TARGET FILE
+release_banner.txt (single meaningful line), mirrored by the RELEASE_BANNER
+line of dashboard.py
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/blob/main/release_banner.txt
+
+EVIDENCE DOCUMENTS
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/blob/main/README.md
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/blob/main/CONFLICT_EVIDENCE.md
+
+COMMIT HISTORY VIEW
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commits/main
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/network
