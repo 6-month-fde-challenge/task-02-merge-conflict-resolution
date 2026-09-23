@@ -70,31 +70,31 @@ The banner line printed there is the **resolved** conflict line.
 
 ## The conflict, step by step
 
-**Common base commit:** `00d26c81d23ce4a4279ec6d2d1065127e037b411` (`00d26c8`)
+**Common base commit:** `5bc90638fc968110c180514044fa863e3057ed9c` (`5bc9063`)
 - "Add release_banner.txt as the shared release banner text"
 
 Both branches were cut from that exact commit using
-`git switch -c <branch> 00d26c81d23ce4a4279ec6d2d1065127e037b411`, so they are
+`git switch -c <branch> 5bc90638fc968110c180514044fa863e3057ed9c`, so they are
 true siblings rather than one descending from the other:
 
 ```text
 $ git merge-base feature-banner-blue feature-banner-green
-00d26c81d23ce4a4279ec6d2d1065127e037b411
+5bc90638fc968110c180514044fa863e3057ed9c
 ```
 
 **The two branches:**
 
 | Branch | Tip | Link |
 | --- | --- | --- |
-| `feature-banner-blue` | `f0ff2f9` | [tree/feature-banner-blue](https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/feature-banner-blue) |
-| `feature-banner-green` | `404a7c8` | [tree/feature-banner-green](https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/feature-banner-green) |
+| `feature-banner-blue` | `59a3c53` | [tree/feature-banner-blue](https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/feature-banner-blue) |
+| `feature-banner-green` | `a895cee` | [tree/feature-banner-green](https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/feature-banner-green) |
 
 **The exact line that diverged** - line 8 of `release_banner.txt`, mirrored by
 the `RELEASE_BANNER` line of `dashboard.py`:
 
 | Version | Line 8 of `release_banner.txt` |
 | --- | --- |
-| base `00d26c8` | `Calculator Suite v1.0 - release banner pending final wording` |
+| base `5bc9063` | `Calculator Suite v1.0 - release banner pending final wording` |
 | `feature-banner-blue` | `Calculator Suite v1.0 - Blue Edition: fast, focused arithmetic for everyday use` |
 | `feature-banner-green` | `Calculator Suite v1.0 - Green Edition: reliable, fully tested arithmetic you can trust` |
 
@@ -243,12 +243,12 @@ Changes to be committed:
 	modified:   release_banner.txt
 ```
 
-**Resolution commit:** [`e64f511a52ba06ac0bc8291a6d873fe60e89b262`](https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/e64f511a52ba06ac0bc8291a6d873fe60e89b262)
+**Resolution commit:** [`c8590ca040ee1fe7e0c132091575dde8d581a676`](https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/c8590ca040ee1fe7e0c132091575dde8d581a676)
 
 ```text
-$ git show e64f511a52ba06ac0bc8291a6d873fe60e89b262 --stat
-commit e64f511a52ba06ac0bc8291a6d873fe60e89b262
-Merge: accd3ab 404a7c8
+$ git show c8590ca040ee1fe7e0c132091575dde8d581a676 --stat
+commit c8590ca040ee1fe7e0c132091575dde8d581a676
+Merge: 0536701 a895cee
 Author: veerandra7 <veerandra.data@gmail.com>
 Date:   Mon Sep 21 18:24:35 2026 +0530
 
@@ -259,7 +259,7 @@ Date:   Mon Sep 21 18:24:35 2026 +0530
  2 files changed, 5 insertions(+), 3 deletions(-)
 ```
 
-The `Merge: accd3ab 404a7c8` line is the two-parent proof: this is a real merge
+The `Merge: 0536701 a895cee` line is the two-parent proof: this is a real merge
 commit, not a hand-edited ordinary commit.
 
 ---
@@ -270,37 +270,37 @@ The whole point of the task, pasted from the repository:
 
 ```text
 $ git log --graph --oneline --all --decorate
-* 6d49063 (HEAD -> main, origin/main) Document the merge conflict with captured evidence and submission links
-*   e64f511 Resolve merge conflict in release_banner.txt by combining both branch wordings
+* 83b8bde (HEAD -> main, origin/main) Document the merge conflict with captured evidence and submission links
+*   c8590ca Resolve merge conflict in release_banner.txt by combining both branch wordings
 |\
-| * 404a7c8 (origin/feature-banner-green, feature-banner-green) Reword release banner for the Green Edition
-* |   accd3ab Merge feature-banner-blue into main
+| * a895cee (origin/feature-banner-green, feature-banner-green) Reword release banner for the Green Edition
+* |   0536701 Merge feature-banner-blue into main
 |\ \
 | |/
 |/|
-| * f0ff2f9 (origin/feature-banner-blue, feature-banner-blue) Reword release banner for the Blue Edition
+| * 59a3c53 (origin/feature-banner-blue, feature-banner-blue) Reword release banner for the Blue Edition
 |/
-* 00d26c8 Add release_banner.txt as the shared release banner text
-* 5dc7ae6 Add calculator entry point and dashboard presentation layer
-* 727fd21 Add addition, subtraction, multiplication and division modules
-* b2867fc Add login, profile and numeric input collection modules
-* e539452 Add project scaffolding with gitignore, env template and configuration
+* 5bc9063 Add release_banner.txt as the shared release banner text
+* cba7d30 Add calculator entry point and dashboard presentation layer
+* 7c74aaa Add addition, subtraction, multiplication and division modules
+* 0532f4f Add login, profile and numeric input collection modules
+* f2d9f12 Add project scaffolding with gitignore, env template and configuration
 ```
 
 > **Note on this capture.** It was taken one commit before the final
 > "Refresh captured git history evidence" commit that published it, so `main`
-> shows `6d49063` at the tip rather than that refresh commit. Everything the
+> shows `83b8bde` at the tip rather than that refresh commit. Everything the
 > task is graded on - the base commit, both branch tips, both merges and the
 > resolution commit - is unaffected. Run the command yourself on a clone to see
 > the same shape with one extra commit on top.
 
 How to read it:
 
-- `00d26c8` is the **common base**. Both branch lines leave from it.
-- `f0ff2f9` and `404a7c8` are the two **branch tips**, still alive and pushed,
+- `5bc9063` is the **common base**. Both branch lines leave from it.
+- `59a3c53` and `a895cee` are the two **branch tips**, still alive and pushed,
   each shown with its branch name in parentheses.
-- `accd3ab` is **merge 1**, the clean `--no-ff` merge of the Blue branch.
-- `e64f511` is **merge 2**, the conflict-resolution merge of the Green branch.
+- `0536701` is **merge 1**, the clean `--no-ff` merge of the Blue branch.
+- `c8590ca` is **merge 2**, the conflict-resolution merge of the Green branch.
 - The two `|\` forks are the two merges; the diamond shape is exactly the
   "two branches from one base, both merged back" topology the task asks for.
 
@@ -308,17 +308,17 @@ Both merges, listed on their own:
 
 ```text
 $ git log --merges --oneline
-e64f511 Resolve merge conflict in release_banner.txt by combining both branch wordings
-accd3ab Merge feature-banner-blue into main
+c8590ca Resolve merge conflict in release_banner.txt by combining both branch wordings
+0536701 Merge feature-banner-blue into main
 ```
 
 Both feature branches exist on the remote:
 
 ```text
 $ git ls-remote --heads origin
-f0ff2f9eb67459e82cb656c8caf38ba230716710	refs/heads/feature-banner-blue
-404a7c819a1fc320bb7f458a977657a222cee94c	refs/heads/feature-banner-green
-6d49063a7f4674d91d3a290c386cfafe75497dea	refs/heads/main
+59a3c53d9121a46e18ae97e1853c29e453f08837	refs/heads/feature-banner-blue
+a895cee26fce3370b14d4e48bf52f23f1ec52abe	refs/heads/feature-banner-green
+83b8bde543fe308c8d8b9679b009d540d321122a	refs/heads/main
 ```
 
 ---
@@ -340,19 +340,19 @@ $ git config user.email "veerandra.data@gmail.com"
 
 ```text
 $ git log --oneline
-00d26c8 Add release_banner.txt as the shared release banner text
-5dc7ae6 Add calculator entry point and dashboard presentation layer
-727fd21 Add addition, subtraction, multiplication and division modules
-b2867fc Add login, profile and numeric input collection modules
-e539452 Add project scaffolding with gitignore, env template and configuration
+5bc9063 Add release_banner.txt as the shared release banner text
+cba7d30 Add calculator entry point and dashboard presentation layer
+7c74aaa Add addition, subtraction, multiplication and division modules
+0532f4f Add login, profile and numeric input collection modules
+f2d9f12 Add project scaffolding with gitignore, env template and configuration
 ```
 
-`00d26c8` is the base commit, recorded before branching.
+`5bc9063` is the base commit, recorded before branching.
 
 **3. Branch 1 from the base**
 
 ```text
-$ git switch -c feature-banner-blue 00d26c81d23ce4a4279ec6d2d1065127e037b411
+$ git switch -c feature-banner-blue 5bc90638fc968110c180514044fa863e3057ed9c
 Switched to a new branch 'feature-banner-blue'
 $ tail -1 release_banner.txt
 Calculator Suite v1.0 - Blue Edition: fast, focused arithmetic for everyday use
@@ -362,13 +362,13 @@ $ git commit -m "Reword release banner for the Blue Edition"
 **4. Branch 2 from the SAME base**
 
 ```text
-$ git switch -c feature-banner-green 00d26c81d23ce4a4279ec6d2d1065127e037b411
+$ git switch -c feature-banner-green 5bc90638fc968110c180514044fa863e3057ed9c
 Switched to a new branch 'feature-banner-green'
 $ tail -1 release_banner.txt
 Calculator Suite v1.0 - Green Edition: reliable, fully tested arithmetic you can trust
 $ git commit -m "Reword release banner for the Green Edition"
 $ git merge-base feature-banner-blue feature-banner-green
-00d26c81d23ce4a4279ec6d2d1065127e037b411
+5bc90638fc968110c180514044fa863e3057ed9c
 ```
 
 **5. Merge 1 - clean**
@@ -403,7 +403,7 @@ release_banner.txt
 $ git add release_banner.txt dashboard.py
 $ git commit -m "Resolve merge conflict in release_banner.txt by combining both branch wordings"
 $ git rev-list --parents -n 1 HEAD
-e64f511a52ba06ac0bc8291a6d873fe60e89b262 accd3ab6df8fece3be40381341086d198dfd4716 404a7c819a1fc320bb7f458a977657a222cee94c
+c8590ca040ee1fe7e0c132091575dde8d581a676 0536701dea5370435933f6627302af45a9942414 a895cee26fce3370b14d4e48bf52f23f1ec52abe
 ```
 
 **8. Push everything, keeping both branches alive**
@@ -424,7 +424,7 @@ flat file snapshot. Every point raised has been addressed:
 - **"No verifiable branch or commit history proving two branches were created
   from the same base."** The full commit graph is now pushed with both feature
   branches alive on the remote, and `git merge-base` output plus the base SHA
-  `00d26c81d23ce4a4279ec6d2d1065127e037b411` are pasted into this README and
+  `5bc90638fc968110c180514044fa863e3057ed9c` are pasted into this README and
   into `CONFLICT_EVIDENCE.md`.
 - **"No file history or diff is visible showing the same line of the same file
   changed differently in two branches."** Both `git diff` captures are pasted

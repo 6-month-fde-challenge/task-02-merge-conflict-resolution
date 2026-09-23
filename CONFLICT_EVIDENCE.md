@@ -9,11 +9,11 @@ Quick reference:
 
 | Thing | Value |
 | --- | --- |
-| Common base commit | `00d26c81d23ce4a4279ec6d2d1065127e037b411` (`00d26c8`) |
-| Branch 1 | `feature-banner-blue` -> commit `f0ff2f9` |
-| Branch 2 | `feature-banner-green` -> commit `404a7c8` |
-| Merge 1 (clean, `--no-ff`) | `accd3ab6df8fece3be40381341086d198dfd4716` |
-| Merge 2 (conflicted, resolved by hand) | `e64f511a52ba06ac0bc8291a6d873fe60e89b262` |
+| Common base commit | `5bc90638fc968110c180514044fa863e3057ed9c` (`5bc9063`) |
+| Branch 1 | `feature-banner-blue` -> commit `59a3c53` |
+| Branch 2 | `feature-banner-green` -> commit `a895cee` |
+| Merge 1 (clean, `--no-ff`) | `0536701dea5370435933f6627302af45a9942414` |
+| Merge 2 (conflicted, resolved by hand) | `c8590ca040ee1fe7e0c132091575dde8d581a676` |
 | Conflict target file | `release_banner.txt` (single meaningful line) + mirrored `RELEASE_BANNER` line in `dashboard.py` |
 
 ---
@@ -25,25 +25,25 @@ the commit that introduced `release_banner.txt`:
 
 ```text
 $ git merge-base feature-banner-blue feature-banner-green
-00d26c81d23ce4a4279ec6d2d1065127e037b411
+5bc90638fc968110c180514044fa863e3057ed9c
 ```
 
-And that commit is `00d26c8` in the log:
+And that commit is `5bc9063` in the log:
 
 ```text
 $ git log --oneline --graph --all --decorate
-* 404a7c8 (feature-banner-green) Reword release banner for the Green Edition
-| * f0ff2f9 (feature-banner-blue) Reword release banner for the Blue Edition
+* a895cee (feature-banner-green) Reword release banner for the Green Edition
+| * 59a3c53 (feature-banner-blue) Reword release banner for the Blue Edition
 |/
-* 00d26c8 (HEAD -> main) Add release_banner.txt as the shared release banner text
-* 5dc7ae6 Add calculator entry point and dashboard presentation layer
-* 727fd21 Add addition, subtraction, multiplication and division modules
-* b2867fc Add login, profile and numeric input collection modules
-* e539452 Add project scaffolding with gitignore, env template and configuration
+* 5bc9063 (HEAD -> main) Add release_banner.txt as the shared release banner text
+* cba7d30 Add calculator entry point and dashboard presentation layer
+* 7c74aaa Add addition, subtraction, multiplication and division modules
+* 0532f4f Add login, profile and numeric input collection modules
+* f2d9f12 Add project scaffolding with gitignore, env template and configuration
 ```
 
 The `|/` in that graph is the fork point: both branch tips descend from
-`00d26c8` and neither descends from the other.
+`5bc9063` and neither descends from the other.
 
 ---
 
@@ -102,7 +102,7 @@ Merge made by the 'ort' strategy.
  2 files changed, 2 insertions(+), 2 deletions(-)
 ```
 
-`--no-ff` forces a real merge commit (`accd3ab`) instead of fast-forwarding, so
+`--no-ff` forces a real merge commit (`0536701`) instead of fast-forwarding, so
 the branch topology stays visible in the graph forever.
 
 ---
@@ -249,9 +249,9 @@ the next commit a true conflict-resolution merge commit.
 ## 8. The resolution commit
 
 ```text
-$ git show e64f511a52ba06ac0bc8291a6d873fe60e89b262 --stat
-commit e64f511a52ba06ac0bc8291a6d873fe60e89b262
-Merge: accd3ab 404a7c8
+$ git show c8590ca040ee1fe7e0c132091575dde8d581a676 --stat
+commit c8590ca040ee1fe7e0c132091575dde8d581a676
+Merge: 0536701 a895cee
 Author: veerandra7 <veerandra.data@gmail.com>
 Date:   Mon Sep 21 18:24:35 2026 +0530
 
@@ -268,7 +268,7 @@ Date:   Mon Sep 21 18:24:35 2026 +0530
  2 files changed, 5 insertions(+), 3 deletions(-)
 ```
 
-The `Merge: accd3ab 404a7c8` header is the proof that this is a genuine merge
+The `Merge: 0536701 a895cee` header is the proof that this is a genuine merge
 commit with two parents: the previous state of `main` and the tip of
 `feature-banner-green`. A hand-edited ordinary commit could not have it.
 
@@ -276,13 +276,13 @@ Confirmed independently:
 
 ```text
 $ git rev-list --parents -n 1 HEAD
-e64f511a52ba06ac0bc8291a6d873fe60e89b262 accd3ab6df8fece3be40381341086d198dfd4716 404a7c819a1fc320bb7f458a977657a222cee94c
+c8590ca040ee1fe7e0c132091575dde8d581a676 0536701dea5370435933f6627302af45a9942414 a895cee26fce3370b14d4e48bf52f23f1ec52abe
 ```
 
 ```text
 $ git log --merges --oneline
-e64f511 Resolve merge conflict in release_banner.txt by combining both branch wordings
-accd3ab Merge feature-banner-blue into main
+c8590ca Resolve merge conflict in release_banner.txt by combining both branch wordings
+0536701 Merge feature-banner-blue into main
 ```
 
 Two merge commits: the clean one and the conflicted one.
@@ -293,21 +293,21 @@ Two merge commits: the clean one and the conflicted one.
 
 ```text
 $ git log --graph --oneline --all --decorate
-* 6d49063 (HEAD -> main, origin/main) Document the merge conflict with captured evidence and submission links
-*   e64f511 Resolve merge conflict in release_banner.txt by combining both branch wordings
+* 83b8bde (HEAD -> main, origin/main) Document the merge conflict with captured evidence and submission links
+*   c8590ca Resolve merge conflict in release_banner.txt by combining both branch wordings
 |\
-| * 404a7c8 (origin/feature-banner-green, feature-banner-green) Reword release banner for the Green Edition
-* |   accd3ab Merge feature-banner-blue into main
+| * a895cee (origin/feature-banner-green, feature-banner-green) Reword release banner for the Green Edition
+* |   0536701 Merge feature-banner-blue into main
 |\ \
 | |/
 |/|
-| * f0ff2f9 (origin/feature-banner-blue, feature-banner-blue) Reword release banner for the Blue Edition
+| * 59a3c53 (origin/feature-banner-blue, feature-banner-blue) Reword release banner for the Blue Edition
 |/
-* 00d26c8 Add release_banner.txt as the shared release banner text
-* 5dc7ae6 Add calculator entry point and dashboard presentation layer
-* 727fd21 Add addition, subtraction, multiplication and division modules
-* b2867fc Add login, profile and numeric input collection modules
-* e539452 Add project scaffolding with gitignore, env template and configuration
+* 5bc9063 Add release_banner.txt as the shared release banner text
+* cba7d30 Add calculator entry point and dashboard presentation layer
+* 7c74aaa Add addition, subtraction, multiplication and division modules
+* 0532f4f Add login, profile and numeric input collection modules
+* f2d9f12 Add project scaffolding with gitignore, env template and configuration
 ```
 
 Both branch tips are kept alive and pushed, so this exact graph reproduces on a
@@ -315,15 +315,15 @@ fresh clone with `git log --graph --oneline --all --decorate`.
 
 > **Note on this capture.** It was taken one commit before the final
 > "Refresh captured git history evidence" commit that published it, so `main`
-> shows `6d49063` at the tip rather than that refresh commit. The base commit,
+> shows `83b8bde` at the tip rather than that refresh commit. The base commit,
 > both branch tips, both merge commits and the resolution commit are all exactly
 > as shown; only one extra commit sits on top of `main` in the live repository.
 
 ```text
 $ git ls-remote --heads origin
-f0ff2f9eb67459e82cb656c8caf38ba230716710	refs/heads/feature-banner-blue
-404a7c819a1fc320bb7f458a977657a222cee94c	refs/heads/feature-banner-green
-6d49063a7f4674d91d3a290c386cfafe75497dea	refs/heads/main
+59a3c53d9121a46e18ae97e1853c29e453f08837	refs/heads/feature-banner-blue
+a895cee26fce3370b14d4e48bf52f23f1ec52abe	refs/heads/feature-banner-green
+83b8bde543fe308c8d8b9679b009d540d321122a	refs/heads/main
 ```
 
 All three branches are present on the remote: `main` plus both feature branches.

@@ -14,22 +14,22 @@ feature-banner-green
 https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/tree/feature-banner-green
 
 COMMON BASE COMMIT (both branches were created from this commit)
-00d26c81d23ce4a4279ec6d2d1065127e037b411
-https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/00d26c81d23ce4a4279ec6d2d1065127e037b411
+5bc90638fc968110c180514044fa863e3057ed9c
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/5bc90638fc968110c180514044fa863e3057ed9c
 
 BRANCH TIP COMMITS (the same line changed differently)
-feature-banner-blue  f0ff2f9eb67459e82cb656c8caf38ba230716710
-https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/f0ff2f9eb67459e82cb656c8caf38ba230716710
-feature-banner-green 404a7c819a1fc320bb7f458a977657a222cee94c
-https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/404a7c819a1fc320bb7f458a977657a222cee94c
+feature-banner-blue  59a3c53d9121a46e18ae97e1853c29e453f08837
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/59a3c53d9121a46e18ae97e1853c29e453f08837
+feature-banner-green a895cee26fce3370b14d4e48bf52f23f1ec52abe
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/a895cee26fce3370b14d4e48bf52f23f1ec52abe
 
 MERGE 1 - CLEAN MERGE OF feature-banner-blue (--no-ff)
-accd3ab6df8fece3be40381341086d198dfd4716
-https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/accd3ab6df8fece3be40381341086d198dfd4716
+0536701dea5370435933f6627302af45a9942414
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/0536701dea5370435933f6627302af45a9942414
 
 MERGE 2 - CONFLICT RESOLUTION COMMIT (the deliverable)
-e64f511a52ba06ac0bc8291a6d873fe60e89b262
-https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/e64f511a52ba06ac0bc8291a6d873fe60e89b262
+c8590ca040ee1fe7e0c132091575dde8d581a676
+https://github.com/6-month-fde-challenge/task-02-merge-conflict-resolution/commit/c8590ca040ee1fe7e0c132091575dde8d581a676
 
 CONFLICT TARGET FILE
 release_banner.txt (single meaningful line), mirrored by the RELEASE_BANNER
